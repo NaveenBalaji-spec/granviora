@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRANVIORA EVENT MANAGEMENT - Luxury Event Planning</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-container" id="logoContainer">
+                    <i class="fas fa-crown logo-icon"></i>
+                </div>
+                <span class="brand-title">GRANVIORA EVENT MANAGEMENT</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#events" class="nav-link">Events</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#clients" class="nav-link">Clients</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#suggestions" class="nav-link">Suggestions</a>
+                <button class="btn btn--primary nav-login" id="loginBtn">Login</button>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Owner Edit Controls -->
+    <div class="edit-controls" id="editControls" style="display: none;">
+        <button class="btn btn--secondary" id="toggleEditMode">
+            <i class="fas fa-edit"></i> Edit Mode
+        </button>
+        <button class="btn btn--primary" id="uploadLogoBtn">
+            <i class="fas fa-upload"></i> Upload Logo
+        </button>
+        <button class="btn btn--secondary" id="uploadVideoBtn">
+            <i class="fas fa-video"></i> Upload Video
+        </button>
+        <button class="btn btn--secondary" id="manageVendorsBtn">
+            <i class="fas fa-store"></i> Manage Vendors
+        </button>
+        <button class="btn btn--secondary" id="manageClientsBtn">
+            <i class="fas fa-users"></i> Manage Clients
+        </button>
+        <button class="btn btn--secondary" id="viewAnalytics">
+            <i class="fas fa-chart-bar"></i> Analytics
+        </button>
+        <button class="btn btn--outline" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+        <input type="file" id="logoFileInput" accept="image/*" style="display: none;">
+        <input type="file" id="videoFileInput" accept="video/*" style="display: none;">
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-video-container" id="heroVideoContainer">
+            <!-- Video will be added here by owner -->
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title editable" data-field="heroTitle">Luxury Event Management</h1>
+            <p class="hero-subtitle editable" data-field="heroSubtitle">Creating unforgettable experiences with premium vendors and bespoke planning</p>
+            <div class="hero-buttons">
+                <button class="btn btn--primary btn--lg hero-btn" id="exploreEventsBtn">Explore Events</button>
+                <button class="btn btn--outline btn--lg hero-btn" id="getQuoteBtn">Get Quote</button>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title editable" data-field="aboutTitle">About GRANVIORA EVENT MANAGEMENT</h2>
+                <p class="section-subtitle editable" data-field="aboutSubtitle">Premium event management with unparalleled service excellence</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="editable" data-field="aboutDescription">GRANVIORA EVENT MANAGEMENT is a luxury event management company specializing in creating extraordinary experiences. From royal weddings to corporate galas, we bring together the finest vendors and creative vision to make your events unforgettable.</p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fas fa-crown feature-icon"></i>
+                            <h4>Premium Service</h4>
+                            <p>Luxury event planning with attention to every detail</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-users feature-icon"></i>
+                            <h4>Expert Team</h4>
+                            <p>Professional coordinators with years of experience</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-star feature-icon"></i>
+                            <h4>Quality Vendors</h4>
+                            <p>Curated network of premium service providers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="section" id="events">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Events</h2>
+                <p class="section-subtitle">Specialized in creating memorable experiences across all event types</p>
+            </div>
+            <div class="events-grid" id="eventsGrid">
+                <!-- Events will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Gallery</h2>
+                <p class="section-subtitle">Showcasing our finest work and memorable moments</p>
+                <div class="gallery-upload" id="galleryUpload" style="display: none;">
+                    <button class="btn btn--secondary" id="uploadGalleryBtn">
+                        <i class="fas fa-plus"></i> Add Media
+                    </button>
+                    <input type="file" id="galleryFileInput" accept="image/*,video/*" multiple style="display: none;">
+                </div>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Royal Wedding Ceremony</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-video"></i>
+                        <p>Corporate Event Highlights</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <p>Traditional Wedding Setup</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="section" id="clients">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Clients</h2>
+                <p class="section-subtitle">Trusted by hundreds of satisfied customers</p>
+            </div>
+            <div class="testimonials-grid" id="testimonialsGrid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="editable" data-field="testimonial1">"GRANVIORA EVENT MANAGEMENT made our wedding absolutely perfect. Every detail was flawlessly executed."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4 class="editable" data-field="client1Name">Rajesh & Priya</h4>
+                        <span class="editable" data-field="client1Event">Royal Wedding</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="editable" data-field="testimonial2">"Professional service and exceptional coordination for our corporate launch event."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4 class="editable" data-field="client2Name">Tech Solutions Ltd.</h4>
+                        <span class="editable" data-field="client2Event">Corporate Event</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="editable" data-field="testimonial3">"Amazing decoration and seamless event management. Highly recommended!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <h4 class="editable" data-field="client3Name">Suresh Kumar</h4>
+                        <span class="editable" data-field="client3Event">Anniversary Celebration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">Get in touch for your next event</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p class="editable" data-field="address">123 Anna Nagar, Madurai, Tamil Nadu 625001</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p class="editable" data-field="phone">+91 98765 43210</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p class="editable" data-field="email">granvioraevents@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" name="phone" placeholder="Your Phone" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suggestions Page (FIXED) -->
+    <div class="suggestions-page" id="suggestionsPage" style="display: none;">
+        <div class="container">
+            <div class="suggestions-header">
+                <h2>Event Budget Planner</h2>
+                <p>Get personalized vendor recommendations based on your budget</p>
+                <button class="btn btn--outline close-suggestions" id="closeSuggestions">
+                    <i class="fas fa-times"></i> Close
+                </button>
+            </div>
+            
+            <!-- FIXED Budget Form -->
+            <form class="budget-form" id="budgetForm">
+                <div class="form-group">
+                    <label class="form-label">Event Type</label>
+                    <select class="form-control" id="eventTypeSelect" required>
+                        <option value="">Select Event Type</option>
+                        <option value="wedding">Wedding</option>
+                        <option value="corporate">Corporate Event</option>
+                        <option value="birthday">Birthday Party</option>
+                        <option value="anniversary">Anniversary</option>
+                        <option value="political">Political Event</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Budget Range (₹)</label>
+                    <input type="number" class="form-control" id="budgetInput" placeholder="Enter your budget" min="50000" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Number of Guests</label>
+                    <input type="number" class="form-control" id="guestsInput" placeholder="Expected guests" min="50" required>
+                </div>
+                <button type="submit" class="btn btn--primary btn--full-width" id="getSuggestions">Get Recommendations</button>
+            </form>
+
+            <!-- FIXED Recommendations Display -->
+            <div class="recommendations" id="recommendations" style="display: none;">
+                <div class="recommendations-header">
+                    <h3>Recommended Vendors for Your Event</h3>
+                    <div class="budget-summary" id="budgetSummary"></div>
+                </div>
+                <div class="recommendations-grid" id="recommendationsGrid">
+                    <!-- Recommendations will be populated here -->
+                </div>
+            </div>
+
+            <!-- Owner Approval Panel -->
+            <div class="owner-approval" id="ownerApproval" style="display: none;">
+                <h3>Owner Approval Panel</h3>
+                <div class="approval-cards" id="approvalCards">
+                    <!-- Approval cards will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal" style="display: none;">
+        <div class="modal-content login-modal">
+            <div class="modal-header">
+                <h3>Login to GRANVIORA EVENT MANAGEMENT</h3>
+                <button class="modal-close" id="closeLoginModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="role-selection" id="roleSelection">
+                    <h4>Select Your Role</h4>
+                    <div class="role-buttons">
+                        <button class="btn btn--outline role-btn" data-role="owner">
+                            <i class="fas fa-crown"></i> Owner
+                        </button>
+                        <button class="btn btn--outline role-btn" data-role="vendor">
+                            <i class="fas fa-store"></i> Vendor
+                        </button>
+                        <button class="btn btn--outline role-btn" data-role="worker">
+                            <i class="fas fa-users"></i> Worker
+                        </button>
+                        <button class="btn btn--outline role-btn" data-role="member">
+                            <i class="fas fa-user"></i> Member
+                        </button>
+                    </div>
+                </div>
+                <form class="login-form" id="loginForm" style="display: none;" autocomplete="off">
+                    <div class="form-group">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" required autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Login</button>
+                    <button type="button" class="btn btn--outline btn--full-width mt-8" id="backToRoles">Back to Roles</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analytics Dashboard -->
+    <div class="modal-overlay" id="analyticsModal" style="display: none;">
+        <div class="modal-content analytics-modal">
+            <div class="modal-header">
+                <h3>Analytics Dashboard</h3>
+                <button class="modal-close" id="closeAnalyticsModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <div class="analytics-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="analytics-info">
+                            <h4>Total Events</h4>
+                            <span class="analytics-number">127</span>
+                        </div>
+                    </div>
+                    <div class="analytics-card">
+                        <div class="analytics-icon">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <div class="analytics-info">
+                            <h4>Revenue (₹)</h4>
+                            <span class="analytics-number">₹45,67,890</span>
+                        </div>
+                    </div>
+                    <div class="analytics-card">
+                        <div class="analytics-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="analytics-info">
+                            <h4>Active Clients</h4>
+                            <span class="analytics-number">89</span>
+                        </div>
+                    </div>
+                    <div class="analytics-card">
+                        <div class="analytics-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <div class="analytics-info">
+                            <h4>Partner Vendors</h4>
+                            <span class="analytics-number">156</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profit-analysis">
+                    <h4>Profit Analysis</h4>
+                    <div class="profit-cards">
+                        <div class="profit-card">
+                            <h5>Current Month</h5>
+                            <p>Profit: ₹2,34,567 (23% margin)</p>
+                            <p>Risk: Low</p>
+                        </div>
+                        <div class="profit-card">
+                            <h5>Projected Next Month</h5>
+                            <p>Profit: ₹2,89,234 (25% margin)</p>
+                            <p>Risk: Medium</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vendor Management Modal -->
+    <div class="modal-overlay" id="vendorModal" style="display: none;">
+        <div class="modal-content vendor-modal">
+            <div class="modal-header">
+                <h3>Manage Vendors</h3>
+                <button class="modal-close" id="closeVendorModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="vendor-management">
+                    <div class="vendor-list" id="vendorList">
+                        <!-- Vendors will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Client Management Modal -->
+    <div class="modal-overlay" id="clientModal" style="display: none;">
+        <div class="modal-content client-modal">
+            <div class="modal-header">
+                <h3>Manage Clients</h3>
+                <button class="modal-close" id="closeClientModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="client-management">
+                    <div class="client-list" id="clientList">
+                        <!-- Clients will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIXED AI Assistant -->
+    <div class="ai-assistant">
+        <button class="ai-toggle" id="aiToggle">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div class="ai-chat" id="aiChat" style="display: none;">
+            <div class="ai-header">
+                <h4>GRANVIORA Assistant</h4>
+                <button class="ai-close" id="aiClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="ai-messages" id="aiMessages">
+                <div class="ai-message ai-message--bot">
+                    <p>Hello! I'm your GRANVIORA EVENT MANAGEMENT assistant. How can I help you plan your perfect event today?</p>
+                </div>
+            </div>
+            <div class="ai-input-area">
+                <input type="text" class="ai-input" id="aiInput" placeholder="Type your message..." autocomplete="off">
+                <button class="ai-send" id="aiSend">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
