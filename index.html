@@ -243,54 +243,82 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="section" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Contact Us</h2>
-                <p class="section-subtitle">Get in touch for your next event</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt contact-icon"></i>
-                        <div>
-                            <h4>Address</h4>
-                            <p class="editable" data-field="address">Singam Pidari Kovil St, Thathaneri, Madurai, Tamil Nadu 625018</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone contact-icon"></i>
-                        <div>
-                            <h4>Phone</h4>
-                            <p class="editable" data-field="phone">+91 8925123361</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope contact-icon"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p class="editable" data-field="email">granvioraevents@gmail.com</p>
-                        </div>
+<section class="section" id="contact">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">Get in touch for your next event</p>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <div>
+                        <h4>Address</h4>
+                        <p class="editable" data-field="address">Singam Pidari Kovil St, Thathaneri, Madurai, Tamil Nadu 625018</p>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                <div class="contact-item">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p class="editable" data-field="phone">+91 8925123361</p>
                     </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p class="editable" data-field="email">granvioraevents@gmail.com</p>
                     </div>
-                    <div class="form-group">
-                        <input type="tel" class="form-control" name="phone" placeholder="Your Phone" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
-                </form>
+                </div>
+            </div>
+
+            <!-- Contact Form with FormSubmit -->
+            <form class="contact-form" action="https://formsubmit.co/granvioraevents@gmail.com" method="POST">
+                <!-- Optional: Avoid spam -->
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="box">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" class="form-control" name="phone" placeholder="Your Phone" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
+            </form>
+
+            <!-- Social Media Links -->
+            <div class="social-links" style="margin-top: 30px; text-align: center;">
+                <h4 style="margin-bottom: 20px; font-size: 20px;">Follow Us</h4>
+                <a href="https://www.instagram.com/granviora_events" target="_blank" style="margin: 0 12px;">
+                    <img src="https://cdn-icons-png.flaticon.com/48/2111/2111463.png" alt="Instagram" title="Instagram" width="32" height="32">
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=100092933138855" target="_blank" style="margin: 0 12px;">
+                    <img src="https://cdn-icons-png.flaticon.com/48/733/733547.png" alt="Facebook" title="Facebook" width="32" height="32">
+                </a>
+                <a href="https://www.linkedin.com/company/granviora-event-management" target="_blank" style="margin: 0 12px;">
+                    <img src="https://cdn-icons-png.flaticon.com/48/174/174857.png" alt="LinkedIn" title="LinkedIn" width="32" height="32">
+                </a>
+                <a href="https://www.youtube.com/@Granviora_Event_Management" target="_blank" style="margin: 0 12px;">
+                    <img src="https://cdn-icons-png.flaticon.com/48/1384/1384060.png" alt="YouTube" title="YouTube" width="32" height="32">
+                </a>
+                <a href="https://x.com/granviora_event" target="_blank" style="margin: 0 12px;">
+                    <img src="https://cdn-icons-png.flaticon.com/48/5968/5968958.png" alt="X (Twitter)" title="Twitter (X)" width="32" height="32">
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=918925123361" target="_blank" style="margin: 0 12px;">
+                    <img src="https://cdn-icons-png.flaticon.com/48/733/733585.png" alt="WhatsApp" title="WhatsApp" width="32" height="32">
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Suggestions Page (FIXED) -->
     <div class="suggestions-page" id="suggestionsPage" style="display: none;">
