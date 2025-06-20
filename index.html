@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GRANVIORA EVENT MANAGEMENT - Luxury Event Planning</title>
+    <!-- Font Awesome for social media icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -244,101 +246,76 @@
 
     <!-- Contact Section -->
 <section class="section" id="contact">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title">Contact Us</h2>
-            <p class="section-subtitle">Get in touch for your next event</p>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-subtitle">Get in touch for your next event</p>
+    </div>
+
+    <div class="contact-content">
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt contact-icon"></i>
+          <div>
+            <h4>Address</h4>
+            <p>Singam Pidari Kovil St, Thathaneri, Madurai, Tamil Nadu 625018</p>
+          </div>
         </div>
-        <div class="contact-content">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt contact-icon"></i>
-                    <div>
-                        <h4>Address</h4>
-                        <p class="editable" data-field="address">Singam Pidari Kovil St, Thathaneri, Madurai, Tamil Nadu 625018</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone contact-icon"></i>
-                    <div>
-                        <h4>Phone</h4>
-                        <p class="editable" data-field="phone">+91 8925123361</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope contact-icon"></i>
-                    <div>
-                        <h4>Email</h4>
-                        <p class="editable" data-field="email">granvioraevents@gmail.com</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Form with FormSubmit -->
-            <form class="contact-form" id="contactForm">
-    <input type="hidden" name="_captcha" value="false">
-    <div class="form-group">
-        <input type="text" class="form-control" name="name" placeholder="Your Name" required>
-    </div>
-    <div class="form-group">
-        <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-    </div>
-    <div class="form-group">
-        <input type="tel" class="form-control" name="phone" placeholder="Your Phone" required>
-    </div>
-    <div class="form-group">
-        <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
-    </div>
-    <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
-
-    <!-- 👇 This is where the success message appears -->
-    <p id="formSuccess" style="display: none; margin-top: 15px; color: green; font-weight: bold;">
-        ✅ Your message has been sent! Our team will contact you soon.
-    </p>
-</form>
-
-                <!-- Optional: Avoid spam -->
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="box">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="name" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <input type="tel" class="form-control" name="phone" placeholder="Your Phone" required>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
-                </div>
-                <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
-            </form>
-
-            <!-- Social Media Links -->
-            <div class="social-links" style="margin-top: 30px; text-align: center;">
-                <h4 style="margin-bottom: 20px; font-size: 20px;">Follow Us</h4>
-                <a href="https://www.instagram.com/granviora_events" target="_blank" style="margin: 0 12px;">
-                    <img src="https://cdn-icons-png.flaticon.com/48/2111/2111463.png" alt="Instagram" title="Instagram" width="32" height="32">
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=100092933138855" target="_blank" style="margin: 0 12px;">
-                    <img src="https://cdn-icons-png.flaticon.com/48/733/733547.png" alt="Facebook" title="Facebook" width="32" height="32">
-                </a>
-                <a href="https://www.linkedin.com/company/granviora-event-management" target="_blank" style="margin: 0 12px;">
-                    <img src="https://cdn-icons-png.flaticon.com/48/174/174857.png" alt="LinkedIn" title="LinkedIn" width="32" height="32">
-                </a>
-                <a href="https://www.youtube.com/@Granviora_Event_Management" target="_blank" style="margin: 0 12px;">
-                    <img src="https://cdn-icons-png.flaticon.com/48/1384/1384060.png" alt="YouTube" title="YouTube" width="32" height="32">
-                </a>
-                <a href="https://x.com/granviora_event" target="_blank" style="margin: 0 12px;">
-                    <img src="https://cdn-icons-png.flaticon.com/48/5968/5968958.png" alt="X (Twitter)" title="Twitter (X)" width="32" height="32">
-                </a>
-                <a href="https://api.whatsapp.com/send?phone=918925123361" target="_blank" style="margin: 0 12px;">
-                    <img src="https://cdn-icons-png.flaticon.com/48/733/733585.png" alt="WhatsApp" title="WhatsApp" width="32" height="32">
-                </a>
-            </div>
+        <div class="contact-item">
+          <i class="fas fa-phone contact-icon"></i>
+          <div>
+            <h4>Phone</h4>
+            <p>+91 8925123361</p>
+          </div>
         </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope contact-icon"></i>
+          <div>
+            <h4>Email</h4>
+            <p>granvioraevents@gmail.com</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form with FormSubmit -->
+      <form class="contact-form" id="contactForm" action="https://formsubmit.co/granvioraevents@gmail.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://granviora.com/thank-you.html">
+        
+        <div class="form-group">
+          <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <input type="tel" class="form-control" name="phone" placeholder="Your Phone" required>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
+
+        <!-- Success Message -->
+        <p id="formSuccess" style="display: none; margin-top: 15px; color: green; font-weight: bold;">
+          ✅ Your message has been sent! Our team will contact you soon.
+        </p>
+      </form>
+
+      <!-- Social Media Icons -->
+      <div style="margin-top: 30px; text-align: center;">
+        <h4>Follow Us</h4>
+        <div style="margin-top: 10px; font-size: 24px;">
+          <a href="https://instagram.com/granviora_events" target="_blank" style="margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+          <a href="https://facebook.com/GranvioraEM" target="_blank" style="margin: 0 10px;"><i class="fab fa-facebook"></i></a>
+          <a href="https://linkedin.com/company/granviora-event-management" target="_blank" style="margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.youtube.com/@Granviora_Event_Management" target="_blank" style="margin: 0 10px;"><i class="fab fa-youtube"></i></a>
+          <a href="https://x.com/granviora_event" target="_blank" style="margin: 0 10px;"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://wa.me/918925123361" target="_blank" style="margin: 0 10px;"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
     <!-- Suggestions Page (FIXED) -->
