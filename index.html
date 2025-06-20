@@ -276,11 +276,12 @@
           </div>
         </div>
       </div>
-      
+
 <!-- Contact Form with Formspree -->
 <form class="contact-form" id="contactForm" action="https://formspree.io/f/myzjdjyg" method="POST">
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_next" value="https://granviora.com/thank-you.html">
+  <input type="hidden" name="_subject" value="New Contact from Granviora Website">
 
   <div class="form-group">
     <input type="text" class="form-control" name="name" placeholder="Your Name" required>
@@ -294,6 +295,7 @@
   <div class="form-group">
     <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
   </div>
+
   <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
 </form>
 
