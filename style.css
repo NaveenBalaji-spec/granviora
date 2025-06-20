@@ -938,7 +938,7 @@ a:hover {
 }
 
 .logo-container {
-  width: 50px;
+  width: 80px;
   height: 50px;
   background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
   border-radius: var(--radius-base);
@@ -949,7 +949,12 @@ a:hover {
   transition: all var(--duration-normal) var(--ease-standard);
   box-shadow: var(--shadow-glow);
 }
-
+.logo-image {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  max-width: 100%;
+}
 .logo-container:hover {
   transform: scale(1.05);
   box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
