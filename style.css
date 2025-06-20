@@ -938,15 +938,16 @@ a:hover {
 }
 
 .logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  width: auto;
-  height: auto;
-  border-radius: 0;
-  box-shadow: none;
-  padding: 0;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: none !important;
+  width: auto !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border: none !important;
 }
 
 .logo-image {
@@ -955,10 +956,10 @@ a:hover {
   object-fit: contain;
   display: block;
 }
-.logo-container:hover {
+/*.logo-container:hover {
   transform: scale(1.05);
   box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
-}
+}*/
 
 .logo-icon {
   font-size: 24px;
