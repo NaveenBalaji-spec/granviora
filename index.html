@@ -279,7 +279,7 @@
 
 <!-- Contact Form Using Formspree -->
 <form action="https://formspree.io/f/myzjdjyg" method="POST" class="contact-form">
-  <input type="hidden" name="_next" value="https://granviora.com/thank-you.html">
+  <input type="hidden" name="_next" value="https://granviora.com/contact.html?submitted=true">
   <input type="hidden" name="_captcha" value="false">
 
   <div class="form-group">
@@ -297,7 +297,19 @@
 
   <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
 </form>
+<!-- Success Message Displayed After Submission -->
+<p id="formSuccess" style="display: none; margin-top: 15px; color: green; font-weight: bold;">
+  ✅ Your message has been sent! Our team will contact you soon.
+</p>
 
+<script>
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("submitted") === "true") {
+    const msg = document.getElementById("formSuccess");
+    if (msg) msg.style.display = "block";
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+</script>
       <!-- Social Media Icons -->
       <div style="margin-top: 30px; text-align: center;">
         <h4>Follow Us</h4>
