@@ -278,25 +278,13 @@
       </div>
 
 <!-- Contact Form with Formspree -->
-<form class="contact-form" id="contactForm"
-      action="https://formspree.io/f/myzjdjyg"
-      method="POST">
+<form action="https://formspree.io/f/myzjdjyg" method="POST" class="contact-form">
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_next" value="https://granviora.com/thank-you.html">
-
-  <div class="form-group">
-    <input type="text" class="form-control" name="name" placeholder="Your Name" required>
-  </div>
-  <div class="form-group">
-    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-  </div>
-  <div class="form-group">
-    <input type="tel" class="form-control" name="phone" placeholder="Your Phone" required>
-  </div>
-  <div class="form-group">
-    <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
-  </div>
-
+  <input type="text" name="name" placeholder="Your Name" required class="form-control">
+  <input type="email" name="email" placeholder="Your Email" required class="form-control">
+  <input type="tel" name="phone" placeholder="Your Phone" required class="form-control">
+  <textarea name="message" rows="5" placeholder="Your Message" required class="form-control"></textarea>
   <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
 </form>
 
@@ -546,34 +534,28 @@
         </div>
     </div>
 
-    <script src="app.js"></script>
-    <script>
-    const contactForm = document.getElementById('contactForm');
-    const formSuccess = document.getElementById('formSuccess');
+    <!-- Contact Form Using Formspree -->
+<form action="https://formspree.io/f/myzjdjyg" method="POST" class="contact-form" id="contactForm">
+  <!-- Hidden fields -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://granviora.com/thank-you.html">
 
-    contactForm.addEventListener('submit', function (e) {
-        e.preventDefault(); // Stop the form from submitting the normal way
+  <!-- Input Fields -->
+  <div class="form-group">
+    <input type="text" name="name" placeholder="Your Name" required class="form-control">
+  </div>
+  <div class="form-group">
+    <input type="email" name="email" placeholder="Your Email" required class="form-control">
+  </div>
+  <div class="form-group">
+    <input type="tel" name="phone" placeholder="Your Phone" required class="form-control">
+  </div>
+  <div class="form-group">
+    <textarea name="message" rows="5" placeholder="Your Message" required class="form-control"></textarea>
+  </div>
 
-        const formData = new FormData(contactForm);
-
-        fetch("https://formsubmit.co/ajax/granvioraevents@gmail.com", {
-            method: "POST",
-            headers: { 'Accept': 'application/json' },
-            body: formData
-        })
-        .then(response => {
-            if (response.ok) {
-                contactForm.reset(); // Clear form
-                formSuccess.style.display = "block"; // Show success message
-            } else {
-                alert("⚠️ There was an error. Please try again later.");
-            }
-        })
-        .catch(error => {
-            alert("⚠️ Failed to send. Please try again.");
-            console.error(error);
-        });
-    });
-</script>
+  <!-- Submit Button -->
+  <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
+</form>
 </body>
 </html>
