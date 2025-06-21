@@ -279,7 +279,6 @@
 
 <!-- Contact Form Using Formspree -->
 <form action="https://formspree.io/f/myzjdjyg" method="POST" class="contact-form">
-  <input type="hidden" name="_next" value="https://granviora.com/contact.html?submitted=true">
   <input type="hidden" name="_captcha" value="false">
 
   <div class="form-group">
@@ -555,5 +554,10 @@
             </div>
         </div>
     </div>
+    <script>
+  setTimeout(() => {
+    window.location.href = "https://granviora.com/contact.html?submitted=true";
+  }, 1500); // Wait 1.5 seconds before redirecting
+</script>
 </body>
 </html>
