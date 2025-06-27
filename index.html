@@ -539,5 +539,38 @@
             </div>
         </div>
     </div>
+    <script>
+  // Mobile menu toggle
+  document.getElementById("navToggle").addEventListener("click", () => {
+    document.getElementById("navMenu").classList.toggle("active");
+  });
+
+  // Hero Buttons
+  document.getElementById("exploreEventsBtn").addEventListener("click", () => {
+    document.getElementById("events").scrollIntoView({ behavior: "smooth" });
+  });
+
+  document.getElementById("getQuoteBtn").addEventListener("click", () => {
+    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+  });
+
+  // Login Modal
+  document.getElementById("loginBtn").addEventListener("click", () => {
+    document.getElementById("loginModal").style.display = "flex";
+  });
+
+  document.getElementById("closeLoginModal").addEventListener("click", () => {
+    document.getElementById("loginModal").style.display = "none";
+  });
+
+  // AI Assistant Toggle
+  document.getElementById("aiToggle").addEventListener("click", () => {
+    document.getElementById("aiChat").style.display = "block";
+  });
+
+  document.getElementById("aiClose").addEventListener("click", () => {
+    document.getElementById("aiChat").style.display = "none";
+  });
+</script>
 </body>
 </html>
