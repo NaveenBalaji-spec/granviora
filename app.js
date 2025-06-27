@@ -1608,6 +1608,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 console.log('🎉 GRANVIORA EVENT MANAGEMENT - UPGRADED VERSION loaded successfully!');
+
 // ✅ Setup AI Assistant Send Button
 function setupAIAssistant() {
     const aiInput = document.getElementById("aiInput");
@@ -1681,3 +1682,13 @@ if (closeSuggestions && suggestionsPage) {
 document.addEventListener("DOMContentLoaded", function () {
     setupAIAssistant();
 });
+
+// === Mobile Navigation Toggle ===
+const navToggle = document.getElementById("navToggle");
+const navMenu = document.getElementById("navMenu");
+
+if (navToggle && navMenu) {
+  navToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });
+}
