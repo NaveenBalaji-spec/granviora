@@ -2363,4 +2363,50 @@ select.form-control {
     margin: var(--space-16);
     max-width: calc(100vw - 32px);
   }
+/* --------------------------------
+   EVENTS WE COVER - Graviora Style
+----------------------------------- */
+.event-categories {
+  margin-top: 40px;
+  background-color: #111;
+  padding: 30px;
+  border-radius: 10px;
+  color: #f0d288;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.event-heading {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffd700;
+}
+
+.event-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.event-list li {
+  background-color: #222;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: 0.3s;
+  border: 1px solid #444;
+}
+
+.event-list li:hover {
+  background-color: #f0d288;
+  color: #111;
+  cursor: pointer;
+}
+
+
 }
