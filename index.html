@@ -5,19 +5,698 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GRANVIORA EVENT MANAGEMENT - Luxury Event Planning</title>
     <!-- Font Awesome for social media icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* Basic CSS to make the website functional */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #e74c3c;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn--primary {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .btn--primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .btn--outline {
+            background: transparent;
+            border: 2px solid #e74c3c;
+            color: #e74c3c;
+        }
+
+        .btn--outline:hover {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn--secondary {
+            background: #34495e;
+            color: white;
+        }
+
+        .btn--lg {
+            padding: 16px 32px;
+            font-size: 1.1rem;
+        }
+
+        .btn--full-width {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.8), rgba(231, 76, 60, 0.8)),
+                        url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        /* Events Section */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-image {
+            height: 200px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .event-content {
+            padding: 1.5rem;
+        }
+
+        .event-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .event-description {
+            color: #7f8c8d;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 4/3;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #ecf0f1;
+        }
+
+        .gallery-placeholder {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .gallery-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-content p {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .testimonial-author h4 {
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-author span {
+            color: #e74c3c;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #e74c3c;
+            margin-right: 1rem;
+            width: 30px;
+        }
+
+        .contact-item h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #2c3e50;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #e74c3c;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #ecf0f1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #7f8c8d;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .role-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .role-btn {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .role-btn i {
+            font-size: 2rem;
+        }
+
+        /* AI Assistant */
+        .ai-assistant {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1500;
+        }
+
+        .ai-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .ai-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .ai-chat {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 350px;
+            height: 400px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ai-header {
+            padding: 1rem;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ai-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .ai-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .ai-message {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+
+        .ai-message--bot {
+            background: #ecf0f1;
+            margin-right: auto;
+        }
+
+        .ai-message--user {
+            background: #e74c3c;
+            color: white;
+            margin-left: auto;
+        }
+
+        .ai-input-area {
+            padding: 1rem;
+            border-top: 1px solid #ecf0f1;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .ai-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #ecf0f1;
+            border-radius: 8px;
+        }
+
+        .ai-send {
+            padding: 0.75rem 1rem;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* Edit Controls */
+        .edit-controls {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        /* Suggestions Page */
+        .suggestions-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 1800;
+            overflow-y: auto;
+            padding: 2rem 0;
+        }
+
+        .suggestions-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .close-suggestions {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .budget-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-chat {
+                width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .ai-chat {
+                width: 280px;
+                right: -10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="nav-bar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-               <div class="logo-container">
-  <img src="LOGO.png" alt="Granviora Logo" class="logo-image">
-</div>
+                <div class="logo-container">
+                    <img src="LOGO.png" alt="Granviora Logo" class="logo-image">
+                </div>
                 <span class="brand-title">GRANVIORA EVENT MANAGEMENT</span>
             </div>
             <div class="nav-menu" id="navMenu">
@@ -81,77 +760,78 @@
         <div class="hero-overlay"></div>
     </section>
 
-   <!-- About Section -->
-<section class="section" id="about">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title editable" data-field="aboutTitle">About GRANVIORA EVENT MANAGEMENT</h2>
-            <p class="section-subtitle editable" data-field="aboutSubtitle">
-                Every Event. One Vision. GRANVIORA.
-            </p>
-        </div>
-
-        <div class="about-content">
-            <div class="about-text">
-                <p class="editable" data-field="aboutDescription">
-                    <strong>GRANVIORA EVENT MANAGEMENT</strong> is a premier luxury event planning company headquartered in Madurai, Tamil Nadu. We specialize in curating unforgettable experiences for both private and corporate occasions — combining creativity, technology, and flawless execution.<br><br>
-                    With a vision to turn moments into lifelong memories, Granviora handles everything from elegant weddings and lavish receptions to product launches, fashion shows, award ceremonies, and virtual events. Our commitment lies in transforming client dreams into reality with professionalism, style, and precision.<br><br>
-                    Founded by <strong>Naveen Balaji S</strong>, Granviora operates with a core philosophy: <em>“We don’t just plan events — we craft experiences.”</em> Our curated team of designers, planners, and technicians collaborates with the finest vendors and partners to deliver top-tier events with impact and elegance.
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title editable" data-field="aboutTitle">About GRANVIORA EVENT MANAGEMENT</h2>
+                <p class="section-subtitle editable" data-field="aboutSubtitle">
+                    Every Event. One Vision. GRANVIORA.
                 </p>
+            </div>
 
-                <div class="about-features">
-                    <div class="feature-item">
-                        <i class="fas fa-crown feature-icon"></i>
-                        <h4>One Vision</h4>
-                        <p>Unified planning and execution across all event types</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-users feature-icon"></i>
-                        <h4>Expert Team</h4>
-                        <p>Experienced professionals for seamless coordination</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-star feature-icon"></i>
-                        <h4>Premium Experiences</h4>
-                        <p>Elegant, immersive, and technology-driven events</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="editable" data-field="aboutDescription">
+                        <strong>GRANVIORA EVENT MANAGEMENT</strong> is a premier luxury event planning company headquartered in Madurai, Tamil Nadu. We specialize in curating unforgettable experiences for both private and corporate occasions — combining creativity, technology, and flawless execution.<br><br>
+                        With a vision to turn moments into lifelong memories, Granviora handles everything from elegant weddings and lavish receptions to product launches, fashion shows, award ceremonies, and virtual events. Our commitment lies in transforming client dreams into reality with professionalism, style, and precision.<br><br>
+                        Founded by <strong>Naveen Balaji S</strong>, Granviora operates with a core philosophy: <em>"We don't just plan events — we craft experiences."</em> Our curated team of designers, planners, and technicians collaborates with the finest vendors and partners to deliver top-tier events with impact and elegance.
+                    </p>
+
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fas fa-crown feature-icon"></i>
+                            <h4>One Vision</h4>
+                            <p>Unified planning and execution across all event types</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-users feature-icon"></i>
+                            <h4>Expert Team</h4>
+                            <p>Experienced professionals for seamless coordination</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-star feature-icon"></i>
+                            <h4>Premium Experiences</h4>
+                            <p>Elegant, immersive, and technology-driven events</p>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-               
-<!-- Events Section -->
-<section class="section" id="events">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Our Event Categories</h2>
-      <p class="section-subtitle">We handle everything from luxury weddings to corporate launches with perfection.</p>
-    </div>
-    <div class="events-grid">
-      <div class="event-card">
-        <div class="event-image"><i class="fas fa-ring"></i></div>
-        <div class="event-content">
-          <h3 class="event-title">Weddings</h3>
-          <p class="event-description">Royal celebrations with premium decoration and rituals.</p>
+    <!-- Events Section -->
+    <section class="section" id="events">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Event Categories</h2>
+                <p class="section-subtitle">We handle everything from luxury weddings to corporate launches with perfection.</p>
+            </div>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-image"><i class="fas fa-ring"></i></div>
+                    <div class="event-content">
+                        <h3 class="event-title">Weddings</h3>
+                        <p class="event-description">Royal celebrations with premium decoration and rituals.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image"><i class="fas fa-briefcase"></i></div>
+                    <div class="event-content">
+                        <h3 class="event-title">Corporate Events</h3>
+                        <p class="event-description">Product launches, trade shows, brand campaigns, and conferences.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image"><i class="fas fa-birthday-cake"></i></div>
+                    <div class="event-content">
+                        <h3 class="event-title">Celebrations</h3>
+                        <p class="event-description">Birthdays, baby showers, bachelor parties, anniversaries, and more.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="event-card">
-        <div class="event-image"><i class="fas fa-briefcase"></i></div>
-        <div class="event-content">
-          <h3 class="event-title">Corporate Events</h3>
-          <p class="event-description">Product launches, trade shows, brand campaigns, and conferences.</p>
-        </div>
-      </div>
-      <div class="event-card">
-        <div class="event-image"><i class="fas fa-birthday-cake"></i></div>
-        <div class="event-content">
-          <h3 class="event-title">Celebrations</h3>
-          <p class="event-description">Birthdays, baby showers, bachelor parties, anniversaries, and more.</p>
-        </div>
-      </div>
-      <!-- Add more event cards if needed -->
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- Gallery Section -->
     <section class="section" id="gallery">
@@ -229,88 +909,81 @@
     </section>
 
     <!-- Contact Section -->
-<section class="section" id="contact">
-  <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">Contact Us</h2>
-      <p class="section-subtitle">Get in touch for your next event</p>
-    </div>
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">Get in touch for your next event</p>
+            </div>
 
-    <div class="contact-content">
-      <div class="contact-info">
-        <div class="contact-item">
-          <i class="fas fa-map-marker-alt contact-icon"></i>
-          <div>
-            <h4>Address</h4>
-            <p>Singam Pidari Kovil St, Thathaneri, Madurai, Tamil Nadu 625018</p>
-          </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Singam Pidari Kovil St, Thathaneri, Madurai, Tamil Nadu 625018</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 8925123361</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>granvioraevents@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Using Formspree -->
+                <form action="https://formspree.io/f/myzjdjyg" method="POST" class="contact-form">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://granviora.com/thank-you.html">
+
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Your Phone" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="5" placeholder="Your Message" required class="form-control"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
+                </form>
+                
+                <!-- Success Message -->
+                <p id="formSuccess" style="display: none; margin-top: 15px; color: green; font-weight: bold;">
+                    ✅ Your message has been sent! Our team will contact you soon.
+                </p>
+            </div>
+
+            <!-- Social Media Icons -->
+            <div style="margin-top: 30px; text-align: center;">
+                <h4>Follow Us</h4>
+                <div style="margin-top: 10px; font-size: 36px;">
+                    <a href="https://instagram.com/granviora_events" target="_blank" style="margin: 0 10px; color: #e74c3c;"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com/GranvioraEM" target="_blank" style="margin: 0 10px; color: #e74c3c;"><i class="fab fa-facebook"></i></a>
+                    <a href="https://linkedin.com/company/granviora-event-management" target="_blank" style="margin: 0 10px; color: #e74c3c;"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.youtube.com/@Granviora_Event_Management" target="_blank" style="margin: 0 10px; color: #e74c3c;"><i class="fab fa-youtube"></i></a>
+                    <a href="https://x.com/granviora_event" target="_blank" style="margin: 0 10px; color: #e74c3c;"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://wa.me/918925123361" target="_blank" style="margin: 0 10px; color: #e74c3c;"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
         </div>
-        <div class="contact-item">
-          <i class="fas fa-phone contact-icon"></i>
-          <div>
-            <h4>Phone</h4>
-            <p>+91 8925123361</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-envelope contact-icon"></i>
-          <div>
-            <h4>Email</h4>
-            <p>granvioraevents@gmail.com</p>
-          </div>
-        </div>
-      </div>
+    </section>
 
-<!-- Contact Form Using Formspree -->
-<form action="https://formspree.io/f/myzjdjyg" method="POST" class="contact-form">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://granviora.com/thank-you.html">
-
-  <div class="form-group">
-    <input type="text" name="name" placeholder="Your Name" required class="form-control">
-  </div>
-  <div class="form-group">
-    <input type="email" name="email" placeholder="Your Email" required class="form-control">
-  </div>
-  <div class="form-group">
-    <input type="tel" name="phone" placeholder="Your Phone" required class="form-control">
-  </div>
-  <div class="form-group">
-    <textarea name="message" rows="5" placeholder="Your Message" required class="form-control"></textarea>
-  </div>
-
-  <button type="submit" class="btn btn--primary btn--full-width">Send Message</button>
-</form>
-<!-- Success Message Displayed After Submission -->
-<p id="formSuccess" style="display: none; margin-top: 15px; color: green; font-weight: bold;">
-  ✅ Your message has been sent! Our team will contact you soon.
-</p>
-
-<script>
-  const params = new URLSearchParams(window.location.search);
-  if (params.get("submitted") === "true") {
-    const msg = document.getElementById("formSuccess");
-    if (msg) msg.style.display = "block";
-    window.scrollTo(0, document.body.scrollHeight);
-  }
-</script>
-      <!-- Social Media Icons -->
-      <div style="margin-top: 30px; text-align: center;">
-        <h4>Follow Us</h4>
-        <div style="margin-top: 10px; font-size: 36px;">
-          <a href="https://instagram.com/granviora_events" target="_blank" style="margin: 0 10px;"><i class="fab fa-instagram"></i></a>
-          <a href="https://facebook.com/GranvioraEM" target="_blank" style="margin: 0 10px;"><i class="fab fa-facebook"></i></a>
-          <a href="https://linkedin.com/company/granviora-event-management" target="_blank" style="margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
-          <a href="https://www.youtube.com/@Granviora_Event_Management" target="_blank" style="margin: 0 10px;"><i class="fab fa-youtube"></i></a>
-          <a href="https://x.com/granviora_event" target="_blank" style="margin: 0 10px;"><i class="fab fa-x-twitter"></i></a>
-          <a href="https://wa.me/918925123361" target="_blank" style="margin: 0 10px;"><i class="fab fa-whatsapp"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <!-- Suggestions Page (FIXED) -->
+    <!-- Suggestions Page -->
     <div class="suggestions-page" id="suggestionsPage" style="display: none;">
         <div class="container">
             <div class="suggestions-header">
@@ -321,7 +994,7 @@
                 </button>
             </div>
             
-            <!-- FIXED Budget Form -->
+            <!-- Budget Form -->
             <form class="budget-form" id="budgetForm">
                 <div class="form-group">
                     <label class="form-label">Event Type</label>
@@ -345,7 +1018,7 @@
                 <button type="submit" class="btn btn--primary btn--full-width" id="getSuggestions">Get Recommendations</button>
             </form>
 
-            <!-- FIXED Recommendations Display -->
+            <!-- Recommendations Display -->
             <div class="recommendations" id="recommendations" style="display: none;">
                 <div class="recommendations-header">
                     <h3>Recommended Vendors for Your Event</h3>
@@ -353,14 +1026,6 @@
                 </div>
                 <div class="recommendations-grid" id="recommendationsGrid">
                     <!-- Recommendations will be populated here -->
-                </div>
-            </div>
-
-            <!-- Owner Approval Panel -->
-            <div class="owner-approval" id="ownerApproval" style="display: none;">
-                <h3>Owner Approval Panel</h3>
-                <div class="approval-cards" id="approvalCards">
-                    <!-- Approval cards will be populated here -->
                 </div>
             </div>
         </div>
@@ -403,7 +1068,7 @@
                         <input type="password" class="form-control" id="password" required autocomplete="off">
                     </div>
                     <button type="submit" class="btn btn--primary btn--full-width">Login</button>
-                    <button type="button" class="btn btn--outline btn--full-width mt-8" id="backToRoles">Back to Roles</button>
+                    <button type="button" class="btn btn--outline btn--full-width" id="backToRoles" style="margin-top: 8px;">Back to Roles</button>
                 </form>
             </div>
         </div>
@@ -457,64 +1122,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="profit-analysis">
-                    <h4>Profit Analysis</h4>
-                    <div class="profit-cards">
-                        <div class="profit-card">
-                            <h5>Current Month</h5>
-                            <p>Profit: ₹2,34,567 (23% margin)</p>
-                            <p>Risk: Low</p>
-                        </div>
-                        <div class="profit-card">
-                            <h5>Projected Next Month</h5>
-                            <p>Profit: ₹2,89,234 (25% margin)</p>
-                            <p>Risk: Medium</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- Vendor Management Modal -->
-    <div class="modal-overlay" id="vendorModal" style="display: none;">
-        <div class="modal-content vendor-modal">
-            <div class="modal-header">
-                <h3>Manage Vendors</h3>
-                <button class="modal-close" id="closeVendorModal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="vendor-management">
-                    <div class="vendor-list" id="vendorList">
-                        <!-- Vendors will be populated here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Client Management Modal -->
-    <div class="modal-overlay" id="clientModal" style="display: none;">
-        <div class="modal-content client-modal">
-            <div class="modal-header">
-                <h3>Manage Clients</h3>
-                <button class="modal-close" id="closeClientModal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="client-management">
-                    <div class="client-list" id="clientList">
-                        <!-- Clients will be populated here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- FIXED AI Assistant -->
+    <!-- AI Assistant -->
     <div class="ai-assistant">
         <button class="ai-toggle" id="aiToggle">
             <i class="fas fa-robot"></i>
@@ -539,40 +1151,478 @@
             </div>
         </div>
     </div>
+
     <script>
-  // Mobile menu toggle
-  document.getElementById("navToggle").addEventListener("click", () => {
-    document.getElementById("navMenu").classList.toggle("active");
-  });
+        // Global variables
+        let currentUser = null;
+        let isEditMode = false;
+        let editableContent = {};
 
-  // Hero Buttons
-  document.getElementById("exploreEventsBtn").addEventListener("click", () => {
-    document.getElementById("events").scrollIntoView({ behavior: "smooth" });
-  });
+        // Initialize the website
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeNavigation();
+            initializeModals();
+            initializeAIAssistant();
+            initializeForms();
+            initializeEditFeatures();
+            checkFormSubmission();
+        });
 
-  document.getElementById("getQuoteBtn").addEventListener("click", () => {
-    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
-  });
+        // Navigation functionality
+        function initializeNavigation() {
+            // Mobile menu toggle
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
 
-  // Login Modal
-  document.getElementById("loginBtn").addEventListener("click", () => {
-    document.getElementById("loginModal").style.display = "flex";
-  });
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    
+                    if (href === '#suggestions') {
+                        e.preventDefault();
+                        document.getElementById('suggestionsPage').style.display = 'block';
+                        navMenu.classList.remove('active');
+                        return;
+                    }
+                    
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth' });
+                            navMenu.classList.remove('active');
+                        }
+                    }
+                });
+            });
 
-  document.getElementById("closeLoginModal").addEventListener("click", () => {
-    document.getElementById("loginModal").style.display = "none";
-  });
+            // Hero buttons
+            document.getElementById('exploreEventsBtn').addEventListener('click', () => {
+                document.getElementById('events').scrollIntoView({ behavior: 'smooth' });
+            });
 
-  // AI Assistant Toggle
-  document.getElementById("aiToggle").addEventListener("click", () => {
-    document.getElementById("aiChat").style.display = "block";
-  });
+            document.getElementById('getQuoteBtn').addEventListener('click', () => {
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            });
+        }
 
-  document.getElementById("aiClose").addEventListener("click", () => {
-    document.getElementById("aiChat").style.display = "none";
-  });
-</script>
-<script src="app.js"></script>
+        // Modal functionality
+        function initializeModals() {
+            // Login Modal
+            const loginBtn = document.getElementById('loginBtn');
+            const loginModal = document.getElementById('loginModal');
+            const closeLoginModal = document.getElementById('closeLoginModal');
+            const roleButtons = document.querySelectorAll('.role-btn');
+            const roleSelection = document.getElementById('roleSelection');
+            const loginForm = document.getElementById('loginForm');
+            const backToRoles = document.getElementById('backToRoles');
 
+            loginBtn.addEventListener('click', () => {
+                loginModal.style.display = 'flex';
+            });
+
+            closeLoginModal.addEventListener('click', () => {
+                loginModal.style.display = 'none';
+                resetLoginModal();
+            });
+
+            // Role selection
+            roleButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const role = btn.dataset.role;
+                    roleSelection.style.display = 'none';
+                    loginForm.style.display = 'block';
+                    loginForm.dataset.role = role;
+                });
+            });
+
+            backToRoles.addEventListener('click', () => {
+                roleSelection.style.display = 'block';
+                loginForm.style.display = 'none';
+            });
+
+            // Login form submission
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                handleLogin();
+            });
+
+            // Analytics Modal
+            const viewAnalytics = document.getElementById('viewAnalytics');
+            const analyticsModal = document.getElementById('analyticsModal');
+            const closeAnalyticsModal = document.getElementById('closeAnalyticsModal');
+
+            if (viewAnalytics) {
+                viewAnalytics.addEventListener('click', () => {
+                    analyticsModal.style.display = 'flex';
+                });
+            }
+
+            if (closeAnalyticsModal) {
+                closeAnalyticsModal.addEventListener('click', () => {
+                    analyticsModal.style.display = 'none';
+                });
+            }
+
+            // Close modals on overlay click
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                        if (modal.id === 'loginModal') {
+                            resetLoginModal();
+                        }
+                    }
+                });
+            });
+        }
+
+        // AI Assistant functionality
+        function initializeAIAssistant() {
+            const aiToggle = document.getElementById('aiToggle');
+            const aiChat = document.getElementById('aiChat');
+            const aiClose = document.getElementById('aiClose');
+            const aiInput = document.getElementById('aiInput');
+            const aiSend = document.getElementById('aiSend');
+            const aiMessages = document.getElementById('aiMessages');
+
+            aiToggle.addEventListener('click', () => {
+                aiChat.style.display = aiChat.style.display === 'none' ? 'flex' : 'none';
+            });
+
+            aiClose.addEventListener('click', () => {
+                aiChat.style.display = 'none';
+            });
+
+            function sendMessage() {
+                const message = aiInput.value.trim();
+                if (!message) return;
+
+                // Add user message
+                addAIMessage(message, true);
+                aiInput.value = '';
+
+                // Simulate AI response
+                setTimeout(() => {
+                    const response = generateAIResponse(message);
+                    addAIMessage(response, false);
+                }, 1000);
+            }
+
+            aiSend.addEventListener('click', sendMessage);
+            aiInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        }
+
+        function addAIMessage(message, isUser) {
+            const aiMessages = document.getElementById('aiMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `ai-message ${isUser ? 'ai-message--user' : 'ai-message--bot'}`;
+            messageDiv.innerHTML = `<p>${message}</p>`;
+            aiMessages.appendChild(messageDiv);
+            aiMessages.scrollTop = aiMessages.scrollHeight;
+        }
+
+        function generateAIResponse(message) {
+            const responses = {
+                'wedding': 'We specialize in luxury weddings! Our wedding packages start from ₹5 lakhs and include decoration, catering, photography, and complete event coordination. Would you like to know more about our wedding services?',
+                'corporate': 'Our corporate event services include product launches, conferences, and team building events. We handle everything from venue booking to audio-visual setup. What type of corporate event are you planning?',
+                'budget': 'Our event packages are flexible and can be customized to fit your budget. We offer premium services starting from ₹2 lakhs for small celebrations to ₹50+ lakhs for grand weddings. What\'s your approximate budget?',
+                'contact': 'You can reach us at +91 8925123361 or email granvioraevents@gmail.com. We\'re located in Madurai, Tamil Nadu. Would you like to schedule a consultation?',
+                'default': 'Thank you for your interest in GRANVIORA EVENT MANAGEMENT! We specialize in weddings, corporate events, and celebrations. How can I assist you with your event planning needs today?'
+            };
+
+            const lowerMessage = message.toLowerCase();
+            
+            if (lowerMessage.includes('wedding') || lowerMessage.includes('marriage')) {
+                return responses.wedding;
+            } else if (lowerMessage.includes('corporate') || lowerMessage.includes('business')) {
+                return responses.corporate;
+            } else if (lowerMessage.includes('budget') || lowerMessage.includes('cost') || lowerMessage.includes('price')) {
+                return responses.budget;
+            } else if (lowerMessage.includes('contact') || lowerMessage.includes('phone') || lowerMessage.includes('call')) {
+                return responses.contact;
+            } else {
+                return responses.default;
+            }
+        }
+
+        // Form functionality
+        function initializeForms() {
+            // Budget form (Suggestions page)
+            const budgetForm = document.getElementById('budgetForm');
+            const closeSuggestions = document.getElementById('closeSuggestions');
+            const suggestionsPage = document.getElementById('suggestionsPage');
+
+            if (budgetForm) {
+                budgetForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    handleBudgetForm();
+                });
+            }
+
+            if (closeSuggestions) {
+                closeSuggestions.addEventListener('click', () => {
+                    suggestionsPage.style.display = 'none';
+                });
+            }
+        }
+
+        function handleBudgetForm() {
+            const eventType = document.getElementById('eventTypeSelect').value;
+            const budget = parseInt(document.getElementById('budgetInput').value);
+            const guests = parseInt(document.getElementById('guestsInput').value);
+
+            const recommendations = generateRecommendations(eventType, budget, guests);
+            displayRecommendations(recommendations, budget, guests);
+        }
+
+        function generateRecommendations(eventType, budget, guests) {
+            const recommendations = [];
+            const budgetPerGuest = budget / guests;
+
+            // Sample recommendations based on budget
+            if (budgetPerGuest >= 5000) {
+                recommendations.push({
+                    category: 'Venue',
+                    vendor: 'Premium Palace Hall',
+                    cost: Math.floor(budget * 0.3),
+                    description: 'Luxury venue with premium amenities'
+                });
+                recommendations.push({
+                    category: 'Catering',
+                    vendor: 'Royal Feast Catering',
+                    cost: Math.floor(budget * 0.35),
+                    description: 'Multi-cuisine premium catering'
+                });
+                recommendations.push({
+                    category: 'Decoration',
+                    vendor: 'Elite Decorators',
+                    cost: Math.floor(budget * 0.20),
+                    description: 'Premium floral and lighting decoration'
+                });
+                recommendations.push({
+                    category: 'Photography',
+                    vendor: 'Capture Moments Pro',
+                    cost: Math.floor(budget * 0.15),
+                    description: 'Professional photography and videography'
+                });
+            } else if (budgetPerGuest >= 2000) {
+                recommendations.push({
+                    category: 'Venue',
+                    vendor: 'Grand Celebration Hall',
+                    cost: Math.floor(budget * 0.35),
+                    description: 'Well-equipped venue for medium events'
+                });
+                recommendations.push({
+                    category: 'Catering',
+                    vendor: 'Tasty Bites Catering',
+                    cost: Math.floor(budget * 0.40),
+                    description: 'Quality catering with variety'
+                });
+                recommendations.push({
+                    category: 'Decoration',
+                    vendor: 'Creative Decorators',
+                    cost: Math.floor(budget * 0.25),
+                    description: 'Beautiful decoration within budget'
+                });
+            } else {
+                recommendations.push({
+                    category: 'Venue',
+                    vendor: 'Community Hall',
+                    cost: Math.floor(budget * 0.40),
+                    description: 'Budget-friendly venue option'
+                });
+                recommendations.push({
+                    category: 'Catering',
+                    vendor: 'Simple Feast Catering',
+                    cost: Math.floor(budget * 0.45),
+                    description: 'Good food at reasonable prices'
+                });
+                recommendations.push({
+                    category: 'Decoration',
+                    vendor: 'Basic Decorators',
+                    cost: Math.floor(budget * 0.15),
+                    description: 'Simple yet elegant decoration'
+                });
+            }
+
+            return recommendations;
+        }
+
+        function displayRecommendations(recommendations, budget, guests) {
+            const recommendationsDiv = document.getElementById('recommendations');
+            const budgetSummary = document.getElementById('budgetSummary');
+            const recommendationsGrid = document.getElementById('recommendationsGrid');
+
+            const totalCost = recommendations.reduce((sum, rec) => sum + rec.cost, 0);
+            const savings = budget - totalCost;
+
+            budgetSummary.innerHTML = `
+                <p><strong>Total Budget:</strong> ₹${budget.toLocaleString()}</p>
+                <p><strong>Estimated Cost:</strong> ₹${totalCost.toLocaleString()}</p>
+                <p><strong>Remaining:</strong> ₹${savings.toLocaleString()}</p>
+                <p><strong>Cost per Guest:</strong> ₹${Math.floor(totalCost/guests).toLocaleString()}</p>
+            `;
+
+            recommendationsGrid.innerHTML = recommendations.map(rec => `
+                <div class="recommendation-card" style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 1rem;">
+                    <h4 style="color: #e74c3c; margin-bottom: 0.5rem;">${rec.category}</h4>
+                    <h5 style="margin-bottom: 0.5rem;">${rec.vendor}</h5>
+                    <p style="color: #666; margin-bottom: 0.5rem;">${rec.description}</p>
+                    <p style="font-weight: bold; color: #27ae60;">₹${rec.cost.toLocaleString()}</p>
+                </div>
+            `).join('');
+
+            recommendationsDiv.style.display = 'block';
+        }
+
+        // Edit functionality
+        function initializeEditFeatures() {
+            const editControls = document.getElementById('editControls');
+            const toggleEditMode = document.getElementById('toggleEditMode');
+            const logoutBtn = document.getElementById('logoutBtn');
+
+            if (toggleEditMode) {
+                toggleEditMode.addEventListener('click', () => {
+                    isEditMode = !isEditMode;
+                    toggleEditableMode();
+                });
+            }
+
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', logout);
+            }
+        }
+
+        function handleLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const role = document.getElementById('loginForm').dataset.role;
+
+            // Simple authentication (replace with real authentication)
+            const credentials = {
+                owner: { username: 'admin', password: 'admin123' },
+                vendor: { username: 'vendor', password: 'vendor123' },
+                worker: { username: 'worker', password: 'worker123' },
+                member: { username: 'member', password: 'member123' }
+            };
+
+            if (credentials[role] && 
+                username === credentials[role].username && 
+                password === credentials[role].password) {
+                
+                currentUser = { role, username };
+                document.getElementById('loginModal').style.display = 'none';
+                
+                if (role === 'owner') {
+                    document.getElementById('editControls').style.display = 'flex';
+                }
+                
+                showLoginSuccess(role);
+                resetLoginModal();
+            } else {
+                alert('Invalid credentials. Please try again.');
+            }
+        }
+
+        function showLoginSuccess(role) {
+            const message = `Welcome ${role}! You are now logged in.`;
+            const successDiv = document.createElement('div');
+            successDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #27ae60;
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 8px;
+                z-index: 2000;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            `;
+            successDiv.textContent = message;
+            document.body.appendChild(successDiv);
+            
+            setTimeout(() => {
+                successDiv.remove();
+            }, 3000);
+        }
+
+        function logout() {
+            currentUser = null;
+            isEditMode = false;
+            document.getElementById('editControls').style.display = 'none';
+            toggleEditableMode();
+            alert('Logged out successfully!');
+        }
+
+        function resetLoginModal() {
+            document.getElementById('roleSelection').style.display = 'block';
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        function toggleEditableMode() {
+            const editables = document.querySelectorAll('.editable');
+            editables.forEach(element => {
+                if (isEditMode) {
+                    element.style.border = '2px dashed #e74c3c';
+                    element.style.padding = '5px';
+                    element.contentEditable = true;
+                    element.addEventListener('blur', saveEditableContent);
+                } else {
+                    element.style.border = 'none';
+                    element.style.padding = '0';
+                    element.contentEditable = false;
+                    element.removeEventListener('blur', saveEditableContent);
+                }
+            });
+        }
+
+        function saveEditableContent(e) {
+            const field = e.target.dataset.field;
+            const content = e.target.innerHTML;
+            editableContent[field] = content;
+            // Here you would typically save to a database
+            console.log('Saved content:', field, content);
+        }
+
+        function checkFormSubmission() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get("submitted") === "true") {
+                const msg = document.getElementById("formSuccess");
+                if (msg) {
+                    msg.style.display = "block";
+                    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+                }
+            }
+        }
+
+        // Smooth scrolling for older browsers
+        if (!window.CSS || !CSS.supports('scroll-behavior', 'smooth')) {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+    </script>
 </body>
 </html>
