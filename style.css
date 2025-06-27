@@ -2363,6 +2363,8 @@ select.form-control {
     margin: var(--space-16);
     max-width: calc(100vw - 32px);
   }
+
+}
 /* --------------------------------
    EVENTS WE COVER - Graviora Style
 ----------------------------------- */
@@ -2406,7 +2408,4 @@ select.form-control {
   background-color: #f0d288;
   color: #111;
   cursor: pointer;
-}
-
-
 }
