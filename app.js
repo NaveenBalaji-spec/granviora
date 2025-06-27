@@ -1608,3 +1608,76 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 console.log('🎉 GRANVIORA EVENT MANAGEMENT - UPGRADED VERSION loaded successfully!');
+// ✅ Setup AI Assistant Send Button
+function setupAIAssistant() {
+    const aiInput = document.getElementById("aiInput");
+    const aiSend = document.getElementById("aiSend");
+    const aiChatBody = document.getElementById("aiChatBody");
+
+    function sendMessage() {
+        const message = aiInput.value.trim();
+        if (!message) return;
+        const userMsg = document.createElement("div");
+        userMsg.className = "ai-user-message";
+        userMsg.textContent = message;
+        aiChatBody.appendChild(userMsg);
+        aiInput.value = "";
+
+        const aiReply = document.createElement("div");
+        aiReply.className = "ai-bot-message";
+        aiReply.textContent = "Thank you! We'll assist you shortly.";
+        aiChatBody.appendChild(aiReply);
+        aiChatBody.scrollTop = aiChatBody.scrollHeight;
+    }
+
+    if (aiSend) aiSend.addEventListener("click", sendMessage);
+    if (aiInput) aiInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+}
+
+// ✅ Login role switch logic
+const roleButtons = document.querySelectorAll(".role-btn");
+const loginForm = document.getElementById("loginForm");
+const roleSelection = document.getElementById("roleSelection");
+
+roleButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        if (roleSelection) roleSelection.style.display = "none";
+        if (loginForm) loginForm.style.display = "block";
+    });
+});
+
+const backToRoles = document.getElementById("backToRoles");
+if (backToRoles) {
+    backToRoles.addEventListener("click", () => {
+        if (loginForm) loginForm.style.display = "none";
+        if (roleSelection) roleSelection.style.display = "block";
+    });
+}
+
+// ✅ Suggestions Modal Logic
+const suggestionsBtn = document.querySelector("a[href='#suggestions']");
+const suggestionsPage = document.getElementById("suggestionsPage");
+const closeSuggestions = document.getElementById("closeSuggestions");
+
+if (suggestionsBtn && suggestionsPage) {
+    suggestionsBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        suggestionsPage.style.display = "block";
+    });
+}
+
+if (closeSuggestions && suggestionsPage) {
+    closeSuggestions.addEventListener("click", function () {
+        suggestionsPage.style.display = "none";
+    });
+}
+
+// ✅ Run AI assistant on load
+document.addEventListener("DOMContentLoaded", function () {
+    setupAIAssistant();
+});
